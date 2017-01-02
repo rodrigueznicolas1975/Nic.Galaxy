@@ -78,9 +78,14 @@
 <br>
 Opciones:
 > -i, --iniciar=VALUE        Crea los próximo 10 años de las condiciones climática de la galáxia. Valores posibles de parámetros: true=Forzar inicialización, false=verifica si faltan datos, y en caso de faltar, fuerza inicialización.
+<br>
 > --ev, --evulcano=VALUE     Trae la cantidad de período del clima específico del planeta vulcano. Posibles parámetros: Normal, Sequia, Lluvia, Optimo
+<br>
 > --ef, --eferengi=VALUE     Trae la cantidad de período del clima específico del planeta vulcano. Posibles parámetros: Normal, Sequia, Lluvia, Optimo
+<br>
 > --eb, --ebetasoide=VALUE   Trae la cantidad de período del clima específico del planeta vulcano. Posibles parámetros: Normal, Sequia, Lluvia, Optimo
+<br>
 > -c, --clima=VALUE          Trae el clima de un dia específico. Parámetro numérico
+<br>
 > -?, -h, --help             Muestra esta ayuda y sale
  
