@@ -10,7 +10,7 @@
 
 <b>Interpretaciones y aclaraciones de la premisas y Bonus:</b>
 
-- Se toma como el sistema galáctivo empieza el día 0, en donde los 3 plantes y el sol, estan alineados y cuyo valor del coseno es 1 (cos(0) = 1).
+- Se toma como el sistema galáctivo empieza el día 0, en donde los 3 planetas y el sol, estan alineados y cuyo valor del coseno es 1 (cos(0) = 1).
 
 - Los posibles estados climáticos son:
 > * <b>Lluvia</b>: Cuando los 3 Planetas forman un triángulo y el Sol se encuentra dentro del perímetro. Y su pico de intensidad, cuando el perímetro está en su máximo valor.
