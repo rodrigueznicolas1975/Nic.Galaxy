@@ -1,18 +1,22 @@
 # Nic.Galaxy
 - Sistema informático para la predicción del clima de la galaxia que conforman las tres civilizaciones: Vulcanos, Ferengis y Betasoides.
 
+---
+
 <b>Autor: </b>
 - Rodriguez Nicolas
+
+---
 
 <b>Interpretaciones y aclaraciones de la premisas y Bonus:</b>
 
 - Se toma como el sistema galáctivo empieza el día 0, en donde los 3 plantes y el sol, estan alineados y cuyo valor del coseno es 1 (cos(0) = 1).
 
 - Los posibles estados climáticos son:
-> * Lluvia: Cuando los 3 Planetas forman un triángulo y el Sol se encuentra dentro del perímetro. Y su pico de intensidad, cuando el perímetro está en su máximo valor.
-> * Sequía: Cuando los 3 planetas y el sol, están alineados entre sí.
-> * Óptima: Cuando los 3 planetas están alineados entre sí, pero no el Sol, se encuentra óiptima de presión y temperatura.
-> * Normal: Cuando no se cumple con ninguna de los 3 escenarios arriba mencionados.
+> * <b>Lluvia</b>: Cuando los 3 Planetas forman un triángulo y el Sol se encuentra dentro del perímetro. Y su pico de intensidad, cuando el perímetro está en su máximo valor.
+> * <b>Sequía</b>: Cuando los 3 planetas y el sol, están alineados entre sí.
+> * <b>Óptima</b>: Cuando los 3 planetas están alineados entre sí, pero no el Sol, se encuentra óiptima de presión y temperatura.
+> * <b>Normal</b>: Cuando no se cumple con ninguna de los 3 escenarios arriba mencionados.
   
 - En la premisas, habla de poder predecir en los próximos 10 años. En este caso, cada planeta dura distintos días para cumplir un año, ya que un año, significa cuanto tarda el planeta en dar la vuelta completa al Sol. 
   Para calcular cuantos días tiene un año, y sabiendo que un año, sería dar la vuelta completa al sol y volver al punto inicial, sabiendo que nos basamos que el valor del coseno es 1, y el coseno de 360 es una vuelta entera, se divide 360 por la velocidad del planeta.
@@ -23,9 +27,9 @@
 - Se utilizá el almacenamiento de una base relacional para guardar la galaxia, con sus planetas y sus predicciones de los primeros 10 años del planeta que más tarda en completar todo el ciclo.
 
 - Se crearon 3 tipos de servicio:
-> * Inicializador: Para que el sistema calcule y almacene las predicciones de los tiempos.
-> * Predición: Recibiendo el nombre del planeta y el tiempo, el servicio retorna cuantos días/períodos va a aparecer, y dato adiccional, en caso de lluvia, que día es de mayor intensidad.
-> * Clima: Recibiendo el día de la "galaxia", que clima se va a encontrar para los 3 plantes.
+> * <b>Inicializador</b>: Para que el sistema calcule y almacene las predicciones de los tiempos.
+> * <b>Predición</b>: Recibiendo el nombre del planeta y el tiempo, el servicio retorna cuantos días/períodos va a aparecer, y dato adiccional, en caso de lluvia, que día es de mayor intensidad.
+> * <b>Clima</b>: Recibiendo el día de la "galaxia", que clima se va a encontrar para los 3 plantes.
 > Nota: Si se quiere utilizar la Predicción y el clima, sin haberse ejecutado previamente el Inicializador, se producirá una excepción de tipo Nic.Galaxy.Exception.ValidException pidiendo que se ejecute el Inicializador, asi tiene toda la información necesaria.
 
 - Se creó una api y un ejecutable para poder utilizar los servicios, obteniendo los mismos resultados.
