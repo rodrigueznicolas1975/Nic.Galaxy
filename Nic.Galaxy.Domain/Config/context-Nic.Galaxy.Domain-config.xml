@@ -2,7 +2,6 @@
 <objects xmlns="http://www.springframework.net" xmlns:tx="http://www.springframework.net/tx" default-lazy-init="true">
     <!-- SessionFactory-->
     <object id="INHibernateSessionFactory" type="Nic.Galaxy.Domain.Data.SessionFactory.MySqlNHibernateSessionFactory, Nic.Galaxy.Domain" singleton="true">
-        <!--<property name="ConnectionString" value="Server=localhost;Database=galaxy;User ID=root;Password=Camila2010;" />-->
         <property name="ConnectionString" value="server=ee3998a6-8fad-4f0a-b042-a6ec00632254.mysql.sequelizer.com;database=dbee3998a68fad4f0ab042a6ec00632254;uid=hrgtuzlznhvbejou;pwd=LjeBh2HnSiEdKbhCiY8hbs3BT8Ux4PeBdAkVTsqyfabMxwtDiw2uwAWtqKQhgkrd" />
     </object>
 
