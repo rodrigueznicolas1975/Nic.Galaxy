@@ -15,6 +15,8 @@ namespace Nic.Galaxy.Domain.Data.Mapping
             Map(x => x.Direction).Not.Nullable();
             Map(x => x.Radius).Not.Nullable();
             Map(x => x.Velocity).Not.Nullable();
+
+            References(x => x.Galaxy, "GalaxyId");
         }
     }
 }

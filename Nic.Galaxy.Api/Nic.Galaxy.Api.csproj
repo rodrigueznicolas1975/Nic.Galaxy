@@ -156,9 +156,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Config\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Nic.Galaxy.Domain\Nic.Galaxy.Domain.csproj">
       <Project>{91001405-cf51-471e-8ec4-608a517951fc}</Project>
       <Name>Nic.Galaxy.Domain</Name>

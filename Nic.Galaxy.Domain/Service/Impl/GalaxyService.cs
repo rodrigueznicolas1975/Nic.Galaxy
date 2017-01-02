@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Nic.Galaxy.Domain.Data.Repository.Contract;
 using Nic.Galaxy.Domain.Enum;
 using Nic.Galaxy.Domain.Exception;
@@ -69,7 +70,7 @@ namespace Nic.Galaxy.Domain.Service.Impl
             Initialize(string.Empty, force);
         }
 
-        public void Initialize(string galaxyName, bool force)
+        public async void Initialize(string galaxyName, bool force)
         {
             GetGalaxyConfig(galaxyName, true, false);
             var totalDays = MaxTotalDayInGalaxy();
@@ -77,12 +78,18 @@ namespace Nic.Galaxy.Domain.Service.Impl
             if (force || WeatherForecastRepository.CountByGalaxy(_galaxy.Id) != totalDays +1)
             {
                 WeatherForecastRepository.RemoveByGalaxy(_galaxy.Id);
-                
-                for (var day = 0; day <= totalDays; day++)
+                var dayEnum = 0;
+                IList<int> days = (new int[totalDays+1]).Select(x=> dayEnum++).ToList();
+
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+                var tasks = days.Select(async day =>
                 {
                     var weatherForecast = _galaxyConfig.CreatWeatherForecast(_galaxy, day);
                     WeatherForecastRepository.Save(weatherForecast);
-                }
+                });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+
+                await Task.WhenAll(tasks);
             }
         }
 
@@ -118,14 +125,21 @@ namespace Nic.Galaxy.Domain.Service.Impl
         private void GetGalaxy(bool forceCreateGalaxy)
         {
             _galaxy = GalaxyRepository.GetByName(_galaxyConfig.GalaxyName);
-            if (_galaxy == null && forceCreateGalaxy)
+            if (forceCreateGalaxy)
             {
-                _galaxy = new Entity.Galaxy.Galaxy
+                if (_galaxy == null)
                 {
-                    Name = _galaxyConfig.GalaxyName,
-                    Planets = _galaxyConfig.Planets
-                };
-                GalaxyRepository.Save(_galaxy);
+                    _galaxy = new Entity.Galaxy.Galaxy
+                    {
+                        Name = _galaxyConfig.GalaxyName,
+                        Planets = _galaxyConfig.Planets
+                    };
+                    GalaxyRepository.Save(_galaxy);
+                }
+                else
+                {
+                    GalaxyRepository.Update(_galaxy, _galaxyConfig.Planets);
+                }
             }
         }
 

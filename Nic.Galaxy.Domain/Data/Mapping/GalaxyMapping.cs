@@ -12,7 +12,7 @@ namespace Nic.Galaxy.Domain.Data.Mapping
 
             Map(x => x.Name).Not.Nullable().Unique();
 
-            HasMany(x=> x.Planets).KeyColumn("GalaxyId").Cascade.All().Not.LazyLoad();
+            HasMany(x=> x.Planets).KeyColumn("GalaxyId").Cascade.AllDeleteOrphan().Inverse().Not.LazyLoad();
         } 
     }
 }

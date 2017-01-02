@@ -5,6 +5,12 @@ namespace Nic.Galaxy.Domain.Entity.Galaxy
 {
     public class Galaxy : EntityBaseName<int>
     {
-        public virtual IList<Planet> Planets { get; set; } 
+        private IList<Planet> _planets;
+
+        public virtual IList<Planet> Planets
+        {
+            get { return _planets ?? new List<Planet>(0); }
+            set { _planets = value; }
+        } 
     }
 }
