@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nic.Galaxy.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Nic.Galaxy.Api.WebApiConfig">
+            <summary>
+            A web API routes.
+            </summary>
+        </member>
+        <member name="M:Nic.Galaxy.Api.WebApiConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Registers the specified configuration.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="T:Nic.Galaxy.Api.Attributes.CustomExceptionAttribute">
+            <summary>
+            Attribute for custom exception.
+            </summary>
+            <seealso cref="T:System.Web.Http.Filters.ExceptionFilterAttribute" />
+        </member>
+        <member name="M:Nic.Galaxy.Api.Attributes.CustomExceptionAttribute.OnException(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            Raises the exception event.
+            </summary>
+            <param name="actionExecutedContext">The context for the action.</param>
+        </member>
+        <member name="M:Nic.Galaxy.Api.Attributes.CustomExceptionAttribute.HandleExceptions(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            Handles the exceptions described by actionExecutedContext.
+            </summary>
+            <param name="actionExecutedContext">Context for the action executed.</param>
+        </member>
+        <member name="T:Nic.Galaxy.Api.Attributes.SpringDependencyResolver">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Web.Http.Dependencies.IDependencyResolver" />
+        </member>
+        <member name="M:Nic.Galaxy.Api.Attributes.SpringDependencyResolver.GetService(System.Type)">
+            <summary>
+            Retrieves a service from the scope.
+            </summary>
+            <param name="serviceType">The service to be retrieved.</param>
+            <returns>
+            The retrieved service.
+            </returns>
+        </member>
+        <member name="M:Nic.Galaxy.Api.Attributes.SpringDependencyResolver.GetServices(System.Type)">
+            <summary>
+            Retrieves a collection of services from the scope.
+            </summary>
+            <param name="serviceType">The collection of services to be retrieved.</param>
+            <returns>
+            The retrieved collection of services.
+            </returns>
+        </member>
+        <member name="M:Nic.Galaxy.Api.Attributes.SpringDependencyResolver.BeginScope">
+            <summary>
+            Starts a resolution scope.
+            </summary>
+            <returns>
+            The dependency scope.
+            </returns>
+        </member>
+        <member name="M:Nic.Galaxy.Api.Attributes.SpringDependencyResolver.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:Nic.Galaxy.Api.Controllers.WeatherController">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Web.Http.ApiController" />
+        </member>
+        <member name="P:Nic.Galaxy.Api.Controllers.WeatherController.GalaxyService">
+            <summary>
+            Gets or sets the galaxy service.
+            </summary>
+            <value>
+            The galaxy service.
+            </value>
+        </member>
+        <member name="M:Nic.Galaxy.Api.Controllers.WeatherController.Inizializate(System.Boolean)">
+            <summary>
+            Crea los próximo 10 años de las condiciones climática de la galáxia.
+            </summary>
+            <param name="forzar">Si setea en <c>true</c> fuerza e inicia todo nuevamente. Si se setea en <c>false</c>, revisa que se encuentre todos los días, sino los vuelve a generar</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nic.Galaxy.Api.Controllers.WeatherController.GetWeatherStatistic(System.String,System.String)">
+            <summary>
+            Trae el clima de un dia específico.
+            </summary>
+            <param name="planeta">El nombre del planeta</param>
+            <param name="clima">El clima. Posibles parámetros:
+            Normal, Sequia, Lluvia, Optimo</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nic.Galaxy.Api.Controllers.WeatherController.GetVulcanoWeatherStatistic(System.String)">
+            <summary>
+            Trae el clima de un dia específico del planeta Vulcano.
+            </summary>
+            <param name="clima">El clima. Posibles parámetros:
+            Normal, Sequia, Lluvia, Optimo</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nic.Galaxy.Api.Controllers.WeatherController.GetWeatherDay(System.Int32)">
+            <summary>
+            Trae el clima de un dia específico.
+            </summary>
+            <param name="dia">The day.</param>
+        </member>
+        <member name="T:Nic.Galaxy.Api.WebApiApplication">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Web.HttpApplication" />
+        </member>
+        <member name="M:Nic.Galaxy.Api.WebApiApplication.Application_Start">
+            <summary>
+            Applications the start.
+            </summary>
+        </member>
+        <member name="M:Nic.Galaxy.Api.WebApiApplication.ConfigureWebApiSerialization(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Configure web API serialization.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="T:Nic.Galaxy.Api.Serialization.ApiJsonMediaTypeFormatter">
+            <summary>
+            ApiJsonMediaTypeFormatter
+            </summary>
+            <seealso cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" />
+        </member>
+        <member name="M:Nic.Galaxy.Api.Serialization.ApiJsonMediaTypeFormatter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nic.Galaxy.Api.Serialization.ApiJsonMediaTypeFormatter" /> class.
+            </summary>
+        </member>
+        <member name="P:Nic.Galaxy.Api.Serialization.ApiJsonMediaTypeFormatter.Default">
+            <summary>
+            Default API MediaTypeFormatter
+            </summary>
+            <value>
+            The default.
+            </value>
+        </member>
+    </members>
+</doc>
