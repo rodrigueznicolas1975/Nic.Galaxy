@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net" xmlns:tx="http://www.springframework.net/tx" default-lazy-init="true">
+    <!-- SessionFactory-->
+    <object id="INHibernateSessionFactory" type="Nic.Galaxy.Domain.Data.SessionFactory.MySqlNHibernateSessionFactory, Nic.Galaxy.Domain" singleton="true">
+        <!--<property name="ConnectionString" value="Server=localhost;Database=galaxy;User ID=root;Password=Camila2010;" />-->
+        <property name="ConnectionString" value="server=ee3998a6-8fad-4f0a-b042-a6ec00632254.mysql.sequelizer.com;database=dbee3998a68fad4f0ab042a6ec00632254;uid=hrgtuzlznhvbejou;pwd=LjeBh2HnSiEdKbhCiY8hbs3BT8Ux4PeBdAkVTsqyfabMxwtDiw2uwAWtqKQhgkrd" />
+    </object>
+
+    <!-- Repository -->
+    <object id="baseRepository" abstract="true">
+        <property name="SessionFactory" ref="INHibernateSessionFactory" />
+    </object>
+
+    <object id="IGalaxyRepository" parent="baseRepository" type="Nic.Galaxy.Domain.Data.Repository.Impl.GalaxyRepository, Nic.Galaxy.Domain" />
+    <object id="IWeatherForecastRepository" parent="baseRepository" type="Nic.Galaxy.Domain.Data.Repository.Impl.WeatherForecastRepository, Nic.Galaxy.Domain" />
+
+    <!-- Service -->
+    <object id="IGalaxyService" type="Nic.Galaxy.Domain.Service.Impl.GalaxyService, Nic.Galaxy.Domain">
+        <property name="GalaxyRepository" ref="IGalaxyRepository"/>
+        <property name="WeatherForecastRepository" ref="IWeatherForecastRepository"/>
+        <property name="GalaxyConfigs">
+            <list element-type="Nic.Galaxy.Domain.Service.Contract.IGalaxyConfig, Nic.Galaxy.Domain">
+                <ref object="ExamGalaxyConfig"/>
+            </list>
+        </property>
+    </object>
+
+    <!-- Galaxy Config-->
+    <object id="ExamGalaxyConfig" type="Nic.Galaxy.Domain.Service.Impl.GalaxyConfig.ExamGalaxyConfig, Nic.Galaxy.Domain">
+        <property name="GalaxyName" value="Examen"/>
+        <property name="Years" value="10"/>
+        <property name="IsDefault" value="true"/>
+        <property name="Planets">
+            <list element-type="Nic.Galaxy.Domain.Entity.Galaxy.Planet, Nic.Galaxy.Domain">
+                <object type="Nic.Galaxy.Domain.Entity.Galaxy.Planet, Nic.Galaxy.Domain">
+                    <property name="Name" value="Ferengi"/>
+                    <property name="Velocity" value="1"/>
+                    <property name="Direction" value="1"/>
+                    <property name="Radius" value="500"/>
+                </object>
+                <object type="Nic.Galaxy.Domain.Entity.Galaxy.Planet, Nic.Galaxy.Domain">
+                    <property name="Name" value="Betasoide"/>
+                    <property name="Velocity" value="3"/>
+                    <property name="Direction" value="1"/>
+                    <property name="Radius" value="2000"/>
+                </object>
+                <object type="Nic.Galaxy.Domain.Entity.Galaxy.Planet, Nic.Galaxy.Domain">
+                    <property name="Name" value="Vulcano"/>
+                    <property name="Velocity" value="5"/>
+                    <property name="Direction" value="-1"/>
+                    <property name="Radius" value="1000"/>
+                </object>
+            </list>
+        </property>
+    </object>
+</objects>
+
+
+
