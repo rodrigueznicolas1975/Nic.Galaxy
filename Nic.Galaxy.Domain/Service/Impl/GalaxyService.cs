@@ -138,7 +138,8 @@ namespace Nic.Galaxy.Domain.Service.Impl
                 }
                 else
                 {
-                    GalaxyRepository.Update(_galaxy, _galaxyConfig.Planets);
+                    _galaxy.Name = _galaxyConfig.GalaxyName;
+                    GalaxyRepository.UpdatePlanets(_galaxy, _galaxyConfig.Planets);
                 }
             }
         }

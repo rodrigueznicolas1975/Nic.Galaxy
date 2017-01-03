@@ -12,7 +12,7 @@ namespace Nic.Galaxy.Domain.Data.Repository.Impl
             return Query(x => x.Name.Equals(name)).FirstOrDefault();
         }
 
-        public void Update(Entity.Galaxy.Galaxy galaxy, IList<Planet> planets)
+        public void UpdatePlanets(Entity.Galaxy.Galaxy galaxy, IList<Planet> planets)
         {
             galaxy.Planets.Clear();
             foreach (var planet in planets)

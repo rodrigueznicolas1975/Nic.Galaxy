@@ -27,90 +27,71 @@ namespace Nic.Galaxy
 
         private static void GetWeatherDay(string param)
         {
-            int runSuccess = 0;
             int day;
             if (!int.TryParse(param, out day))
             {
                 return;
             }
-            Console.WriteLine("Iniciando y buscando clima... \n");
-            var applicationContext = ContextRegistry.GetContext();
-            var galaxyService = (IGalaxyService)applicationContext.GetObject("IGalaxyService");
-            try
+            ExecuteProcess(string.Format("buscar clima del día {0}", day), () =>
             {
                 Domain.Data.SessionFactory.Transaction.ExecuteInSession(() =>
                 {
-                    var responseWeather = galaxyService.GetWeatherByDay(day);
-                    Console.WriteLine(responseWeather.Clima);
+                    var responseWeather = _galaxyService.GetWeatherByDay(day);
+                    Console.WriteLine("El clima del día {0} es: {1}", day, responseWeather.Clima);
                 });
-            }
-            catch (ValidException validException)
-            {
-                Console.WriteLine("{0}", validException.Message);
-                runSuccess = -1;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Se produjo un error al intentar calcular las estadísticas: {0}", ex.Message);
-                runSuccess = -1;
-            }
-            Console.WriteLine("\nPresione cualquier tecla para finalizar...");
-            Console.ReadKey();
-            Environment.Exit(runSuccess);
+
+            });
         }
 
         private static void WeatherStatistic(string planetName, string param)
         {
-            int runSuccess = 0;
-            Console.WriteLine("Iniciando y buscando estadística del clima {0} para el planeta{1}... \n", param, planetName);
-            var applicationContext = ContextRegistry.GetContext();
-            var galaxyService = (IGalaxyService)applicationContext.GetObject("IGalaxyService");
-            try
+            ExecuteProcess(string.Format("estadística del clima {0} para el planeta{1}", param, planetName), () =>
             {
                 Domain.Data.SessionFactory.Transaction.ExecuteInSession(() =>
                 {
-                    var responseWeatherStatistic  = galaxyService.WeatherStatistic(planetName, param);
+                    var responseWeatherStatistic = _galaxyService.WeatherStatistic(planetName, param);
                     Console.WriteLine(responseWeatherStatistic.Text);
                 });
-            }
-            catch (ValidException validException)
-            {
-                Console.WriteLine("{0}", validException.Message);
-                runSuccess = -1;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Se produjo un error al intentar calcular las estadísticas: {0}", ex.Message);
-                runSuccess = -1;
-            }
-            Console.WriteLine("\nPresione cualquier tecla para finalizar...");
-            Console.ReadKey();
-            Environment.Exit(runSuccess);
+            });
         }
 
         private static void Inizialie(string param)
         {
-            int runSuccess = 0;
             bool force;
             if (!bool.TryParse(param, out force))
             {
                 return;
             }
-            Console.WriteLine("Iniciando y generando dias climáticos... \n");
-            var applicationContext = ContextRegistry.GetContext();
-            var galaxyService = (IGalaxyService)applicationContext.GetObject("IGalaxyService");
-            try
+            ExecuteProcess("de generación de los días climáticos", () =>
             {
                 Domain.Data.SessionFactory.Transaction.ExecuteInTransaction(() =>
                 {
-                    galaxyService.Initialize(force);
+                    _galaxyService.Initialize(force);
                 });
                 Console.WriteLine("Proceso finalizado correctamente");
+            });
+        }
 
+        private static IGalaxyService _galaxyService;
+
+        private static void ExecuteProcess(string processDescription, Action action)
+        {
+            int runSuccess = 0;
+            Console.WriteLine("Iniciando proceso {0}...", processDescription);
+            var applicationContext = ContextRegistry.GetContext();
+            _galaxyService = (IGalaxyService)applicationContext.GetObject("IGalaxyService");
+            try
+            {
+                action.Invoke();
+            }
+            catch (ValidException validException)
+            {
+                Console.WriteLine("{0}", validException.Message);
+                runSuccess = -1;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Se produjo un error al intentar calcular las estadísticas: {0}", ex.Message);
+                Console.WriteLine("Se produjo un error al intentar ejecutar el proceso: {0}", ex.Message);
                 runSuccess = -1;
             }
             Console.WriteLine("\nPresione cualquier tecla para finalizar...");
