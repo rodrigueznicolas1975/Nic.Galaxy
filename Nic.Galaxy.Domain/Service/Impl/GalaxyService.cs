@@ -52,7 +52,7 @@ namespace Nic.Galaxy.Domain.Service.Impl
             GetGalaxyConfig(galaxyName, false, true);
             var totalDays = MaxTotalDayInGalaxy();
 
-            if (day < 0 || day >= totalDays)
+            if (day < 0 || day > totalDays)
             {
                 throw new ValidException(string.Format("El día debe estar comprendido entre 0 y {0}", totalDays));
             }

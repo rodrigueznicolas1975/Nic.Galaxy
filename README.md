@@ -10,12 +10,12 @@
 
 <b>Interpretaciones y aclaraciones de la premisas y Bonus:</b>
 
-- Se toma como el sistema galáctivo empieza el día 0, en donde los 3 planetas y el sol, estan alineados y cuyo valor del coseno es 1 (cos(0) = 1).
+- Se toma como el sistema galáctico empieza el día 0, en donde los 3 planetas y el sol, estan alineados y cuyo valor del coseno es 1 (cos(0) = 1).
 
 - Los posibles estados climáticos son:
 > * <b>Lluvia</b>: Cuando los 3 Planetas forman un triángulo y el Sol se encuentra dentro del perímetro. Y su pico de intensidad, cuando el perímetro está en su máximo valor.
 > * <b>Sequía</b>: Cuando los 3 planetas y el sol, están alineados entre sí.
-> * <b>Óptima</b>: Cuando los 3 planetas están alineados entre sí, pero no el Sol, se encuentra óiptima de presión y temperatura.
+> * <b>Óptima</b>: Cuando los 3 planetas están alineados entre sí, pero no el Sol, se encuentra óptima de presión y temperatura.
 > * <b>Normal</b>: Cuando no se cumple con ninguna de los 3 escenarios arriba mencionados.
   
 - En la premisas, habla de poder predecir en los próximos 10 años. En este caso, cada planeta dura distintos días para cumplir un año, ya que un año, significa cuanto tarda el planeta en dar la vuelta completa al Sol. 
@@ -63,7 +63,7 @@
 > Nota: Este REST, debería haber sido un POST, pero para facilitar la prueba, se lo configuró con GET, así se podía facilitar la ejecución del RES 
 
 * [http://nicgalaxy.apphb.com/planeta/{planeta}/estadistica/{clima}]
-> Devuelve la cantidad de días que tuvo en un planeta determinado <b>['vulcano', 'ferengis', 'betasoides']</b> y el tipo de clima <b>['normal', 'sequia', 'lluvia', 'optimo']</b>
+> Devuelve la cantidad de días que tuvo en un planeta determinado <b>['vulcano', 'ferengi', 'betasoide']</b> y el tipo de clima <b>['normal', 'sequia', 'lluvia', 'optimo']</b>
 
 * [http://nicgalaxy.apphb.com/estadistica/{clima}]
 > Devuelve la cantidad de días que tuvo en el planeta vulcano y el tipo de clima <b>['normal', 'sequia', 'lluvia', 'optimo']</b>
@@ -85,9 +85,9 @@ Opciones:
 <br>
 ><b> --ev, --evulcano=VALUE</b> : Trae la cantidad de período del clima específico del planeta vulcano. Posibles parámetros: Normal, Sequia, Lluvia, Optimo
 <br>
-><b> --ef, --eferengi=VALUE</b> : Trae la cantidad de período del clima específico del planeta vulcano. Posibles parámetros: Normal, Sequia, Lluvia, Optimo
+><b> --ef, --eferengi=VALUE</b> : Trae la cantidad de período del clima específico del planeta ferengi. Posibles parámetros: Normal, Sequia, Lluvia, Optimo
 <br>
-><b> --eb, --ebetasoide=VALUE</b> : Trae la cantidad de período del clima específico del planeta vulcano. Posibles parámetros: Normal, Sequia, Lluvia, Optimo
+><b> --eb, --ebetasoide=VALUE</b> : Trae la cantidad de período del clima específico del planeta betasoide. Posibles parámetros: Normal, Sequia, Lluvia, Optimo
 <br>
 ><b> -c, --clima=VALUE</b> : Trae el clima de un dia específico. Parámetro numérico
 <br>

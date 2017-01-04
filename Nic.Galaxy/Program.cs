@@ -15,8 +15,8 @@ namespace Nic.Galaxy
             {
                 {"i|iniciar=", "Crea los próximo 10 años de las condiciones climática de la galáxia. Valores posibles de parámetros: true=Forzar inicialización, false=verifica si faltan datos, y en caso de faltar, fuerza inicialización.", Inizialie},
                 {"ev|evulcano=", "Trae la cantidad de período del clima específico del planeta vulcano. Posibles parámetros: Normal, Sequia, Lluvia, Optimo", x=> WeatherStatistic("vulcano", x)},
-                {"ef|eferengi=", "Trae la cantidad de período del clima específico del planeta vulcano. Posibles parámetros: Normal, Sequia, Lluvia, Optimo", x=> WeatherStatistic("ferengi", x)},
-                {"eb|ebetasoide=", "Trae la cantidad de período del clima específico del planeta vulcano. Posibles parámetros: Normal, Sequia, Lluvia, Optimo", x=> WeatherStatistic("betasoide", x)},
+                {"ef|eferengi=", "Trae la cantidad de período del clima específico del planeta eferengi. Posibles parámetros: Normal, Sequia, Lluvia, Optimo", x=> WeatherStatistic("ferengi", x)},
+                {"eb|ebetasoide=", "Trae la cantidad de período del clima específico del planeta betasoide. Posibles parámetros: Normal, Sequia, Lluvia, Optimo", x=> WeatherStatistic("betasoide", x)},
                 {"c|clima=", "Trae el clima de un dia específico. Parámetro numérico", GetWeatherDay},
                 { "?|h|help", "Muestra esta ayuda y sale", x => { }}
             };
