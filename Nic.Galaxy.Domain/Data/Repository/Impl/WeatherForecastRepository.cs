@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Nic.Galaxy.Domain.Data.Repository.Contract;
 using Nic.Galaxy.Domain.Entity.Galaxy;
 using Nic.Galaxy.Domain.Enum;
@@ -21,11 +22,12 @@ namespace Nic.Galaxy.Domain.Data.Repository.Impl
                 .RowCount();
         }
 
-        public int DayMaxPerimeterByGalaxy(int galaxyId, int day)
+        public IList<int> DayMaxPerimeterByGalaxy(int galaxyId, int day)
         {
             var weatherForecasts = Query(x => x.Galaxy.Id == galaxyId && x.Day <= day && x.Perimeter > 0).ToList();
             var weatherForecast = weatherForecasts.Max();
-            return weatherForecast.Day;
+            var weatherForeCastsMaxPerimeters = weatherForecasts.Where(x => x.Perimeter.Equals(weatherForecast.Perimeter)).Select(x => x.Day).ToList();
+            return weatherForeCastsMaxPerimeters;
         }
 
         public void RemoveByGalaxy(int galaxyId)

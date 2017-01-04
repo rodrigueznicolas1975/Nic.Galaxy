@@ -37,7 +37,7 @@ namespace Nic.Galaxy.Domain.Service.Impl
             return new ResponseWeatherStatistic
             {
                 Clima = weather.ToString(),
-                DiaMaximoLluvia = weather == Weather.Lluvia ? WeatherForecastRepository.DayMaxPerimeterByGalaxy(_galaxy.Id, maxDay) : -1,
+                DiasMaximoLluvia = weather == Weather.Lluvia ? WeatherForecastRepository.DayMaxPerimeterByGalaxy(_galaxy.Id, maxDay) : null,
                 TotalPeriodo = WeatherForecastRepository.CounWeatherDaysByGalaxy(weather, _galaxy.Id, maxDay)
             };
         }
@@ -56,7 +56,7 @@ namespace Nic.Galaxy.Domain.Service.Impl
             {
                 throw new ValidException(string.Format("El día debe estar comprendido entre 0 y {0}", totalDays));
             }
-            
+
             var weatherForecast = WeatherForecastRepository.GetByDay(_galaxy.Id, day);
             return new ResponseWeather
             {

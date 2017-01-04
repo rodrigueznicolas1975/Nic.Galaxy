@@ -45,7 +45,7 @@ namespace Nic.Galaxy
 
         private static void WeatherStatistic(string planetName, string param)
         {
-            ExecuteProcess(string.Format("estadística del clima {0} para el planeta{1}", param, planetName), () =>
+            ExecuteProcess(string.Format("estadística del clima {0} para el planeta {1}", param, planetName), () =>
             {
                 Domain.Data.SessionFactory.Transaction.ExecuteInSession(() =>
                 {

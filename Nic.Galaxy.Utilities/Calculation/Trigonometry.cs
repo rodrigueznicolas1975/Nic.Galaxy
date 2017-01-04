@@ -15,7 +15,7 @@ namespace Nic.Galaxy.Utilities.Calculation
         /// <returns>X coordinate</returns>
         public static double CalculateXCoordinate(int radius, int velocity, int direction, int day)
         {
-            return radius * Math.Cos(velocity * direction * day);
+            return Convert.ToDouble(radius) * Math.Cos(Convert.ToDouble((velocity * direction * day) % 360) * Math.PI / Convert.ToDouble(180.0));
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Nic.Galaxy.Utilities.Calculation
         /// <returns>Y coordinate</returns>
         public static double CalculateYCoordinate(int radius, int velocity, int direction, int day)
         {
-            return radius * Math.Sin(velocity * direction * day);
+            return Convert.ToDouble(radius) * Math.Sin(Convert.ToDouble((velocity * direction * day) % 360) * Math.PI / Convert.ToDouble(180.0));
         }
 
         /// <summary>
@@ -82,8 +82,8 @@ namespace Nic.Galaxy.Utilities.Calculation
             var substractAxBx = coordinateA.X - coordinateB.X;
             var substractAxCx = coordinateA.X - coordinateC.X;
 
-            var p1 = Math.Round(((substractAxBx / substractAyCy) * 10) / 10);
-            var p2 = Math.Round(((substractAxCx / substractAyBy) * 10) / 10);
+            var p1 = Math.Round(((substractAxBx / substractAyCy) * 10)) / 10.0;
+            var p2 = Math.Round(((substractAxCx / substractAyBy) * 10)) / 10.0;
 
             return p1.Equals(p2);
         }
